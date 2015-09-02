@@ -5,9 +5,17 @@ $light-grey       : #e5e5e5;
 // Colors: funtional variable definitions
 $primary_color    : $white;
 $secondary_color  : $light-grey;
-
+  
 
 // utilty classes
 .clear {
   clear: both;
+}
+
+.flex {
+  display: -webkit-box;           /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;              /* OLD - Firefox 19- (doesn't work very well) */
+  display: -ms-flexbox;           /* TWEENER - IE 10 */
+  display: -webkit-flex;          /* NEW - Chrome */
+  display: flex;
 }
