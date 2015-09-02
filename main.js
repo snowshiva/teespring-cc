@@ -61,20 +61,18 @@ function clickProduct(event) {
 // UI functions 
 function selectProduct() {
   var selectedId = getUrlVars()['id'] ? getUrlVars()['id'] : '1';
-  var products = document.getElementsByClassName('product');
+  var products = $('.product');
   for (var i = 0; i<products.length; i++) {
     products[i].classList.remove('selected');
 
     if (products[i].firstChild.getAttribute('data-product-id') == selectedId) {
       products[i].className += ' selected';
-
       // slide selected thumbnail to 70px from left
       var productsOffset = $('#products').style.left ? parseInt($('#products').style.left) : 0;
-      var offset = 70 - getOffsetRect(products[i]).left + productsOffset;
+      var offset = 70 - getOffset(products[i]).left + productsOffset;
       $('#products').style.left = offset + "px"; 
     }
   }
-
   for (var i in _products) {
     if (_products[i].id == selectedId) {
       $('#product-image').src = _products[i].product_image_url;
@@ -91,7 +89,7 @@ function renderSelectorProduct(product) {
 }
 
 function renderView(data) {
-  var productsEl = document.getElementById('products');
+  var productsEl = $('#products');
   productsEl.addEventListener('click', clickProduct);
   for (i in _products) {
     productsEl.innerHTML += renderSelectorProduct(_products[i]);
@@ -99,24 +97,21 @@ function renderView(data) {
   selectProduct();
 }
 
-function getOffsetRect(elem) {
+function getOffset(elem) {
   // this accounts for margin and border widths of element
   var box = elem.getBoundingClientRect();
   var body = document.body;
   var docElem = document.documentElement;
-  
   // get scrollTop, and give fallback options for sad browsers
   var scrollTop = window.pageYOffset || docElem.scrollTop || body.scrollTop;
   var scrollLeft = window.pageXOffset || docElem.scrollLeft || body.scrollLeft;
-  
   // get shift if any, 0 if not
   var clientTop = docElem.clientTop || body.clientTop || 0;
   var clientLeft = docElem.clientLeft || body.clientLeft || 0;
-  
   // calculate
   var top  = box.top +  scrollTop - clientTop;
   var left = box.left + scrollLeft - clientLeft;
-  
+  // return rounded results
   return { top: Math.round(top), left: Math.round(left) }
 }
 
