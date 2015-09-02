@@ -1,0 +1,84 @@
+@import 'reset';
+@import 'colors-utils';
+
+// mobile first - default styles
+body {
+  font-size: 1em;
+  background-color: $primary_color;
+  font-family: 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif; 
+  font-weight: 300;
+}
+
+.product-view {
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+  align-content: center;
+  border-bottom: 1px solid $secondary_color;
+  #product-image {
+    text-align: center;
+    padding: 25px;
+    img {
+      width: 100%;
+      max-width: 558px;
+    }
+  }
+  #product-title {
+    font-size: 1.6em;
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 25px;
+  }
+}
+
+.product-selector {
+  overflow: hidden;
+  position: relative;
+  height: 100px;
+  #products {
+    transition:all 0.3s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    white-space: nowrap;
+    text-align: center;
+    li {
+      text-align: center;
+      display: inline-block;
+      margin: 2em 1.5em;
+      font-size: .85em;
+      span {
+        visibility: hidden;
+      }
+      &.selected {
+        span {
+          visibility: visible;
+          transition:all 0.3s ease;
+        }
+        & > a {
+          background-color: black;
+        } 
+      }
+      a {
+        display: block;
+        width: 35px;
+        height: 35px;
+        background-color: $secondary_color;
+        margin-bottom: 10px;
+        transition:all 0.3s ease;
+      }
+    }
+  }
+}
+
+
+
+
+// Large 
+@media (min-width: 980px) {
+  body {
+    background-color: #ccc;
+  }
+}
+

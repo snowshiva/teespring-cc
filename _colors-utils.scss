@@ -1,0 +1,13 @@
+// Colors: descriptive variable definitions
+$white            : #fff;
+$light-grey       : #e5e5e5;
+
+// Colors: funtional variable definitions
+$primary_color    : $white;
+$secondary_color  : $light-grey;
+
+
+// utilty classes
+.clear {
+  clear: both;
+}
